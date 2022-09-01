@@ -54,10 +54,11 @@ internal class Program
                 }
                 else if (command == "gather" || command == "Gather")
                 {
-                    int gatheredRocks = random.Next(4);
+                    int gatheredRocks = random.Next(3);
                     int gatheredWood = random.Next(4);
-                    inventory[0, 2] += gatheredRocks;
-                    inventory[1, 2] += gatheredWood;
+                    inventory[0, 0] += gatheredRocks;
+                    inventory[1, 0] += gatheredWood;
+                    energy -= 10;
                     Console.WriteLine("+{0} wood, +{1} rocks", gatheredWood, gatheredRocks);
                 }
                 else if (command == "explore" || command == "Explore")
@@ -130,7 +131,7 @@ internal class Program
                     Console.WriteLine(inventory[3, 0]);
 
                 }
-                else if (command == "checkD")
+                else if (command == "checkDurability")
                 {
                     Console.WriteLine(inventory[2, 1]);
                 }
