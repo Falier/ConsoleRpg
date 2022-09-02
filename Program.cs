@@ -141,7 +141,10 @@ internal class Program
                 {
                     if(inventory[4,0] >= 1)
                     {
-                        Console.WriteLine("Fish");
+                        int fishing;
+                        fishing = random.Next(2);
+                        inventory[4,1] -= 1;
+                        Console.WriteLine("You fished {0} fish", fishing);
                     }
                 }
                 currentDay++;
