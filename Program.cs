@@ -11,7 +11,9 @@ internal class Program
                         /*stone*/{ 0, 0},
                         /*wood*/{ 0, 0},
                         /*Pickaxe*/{0, 0},
-                        /*Axe*/{0, 0}
+                        /*Axe*/{0, 0},
+                        /*Fishing rod*/{0,0},
+                        /*Fish*/ {0,0}
                       };
         int energy = 60;
         int lifePoint = 100;
@@ -134,6 +136,13 @@ internal class Program
                 else if (command == "checkDurability")
                 {
                     Console.WriteLine(inventory[2, 1]);
+                }
+                else if (command == "Fish" || command == "fish")
+                {
+                    if(inventory[4,0] >= 1)
+                    {
+                        Console.WriteLine("Fish");
+                    }
                 }
                 currentDay++;
             }
