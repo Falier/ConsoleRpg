@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\etien\\Documents\\ConsoleRpg\\Console rpg.csproj",
+      "projectUniqueName": "C:\\Users\\etien\\source\\repos\\ConsoleRpg\\Console rpg.csproj",
       "projectName": "Console rpg",
-      "projectPath": "C:\\Users\\etien\\Documents\\ConsoleRpg\\Console rpg.csproj",
+      "projectPath": "C:\\Users\\etien\\source\\repos\\ConsoleRpg\\Console rpg.csproj",
       "packagesPath": "C:\\Users\\etien\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\etien\\Documents\\ConsoleRpg\\obj\\",
+      "outputPath": "C:\\Users\\etien\\source\\repos\\ConsoleRpg\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\etien\\AppData\\Roaming\\NuGet\\NuGet.Config",

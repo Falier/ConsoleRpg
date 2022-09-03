@@ -30,7 +30,6 @@ internal class Program
                 Console.WriteLine("Day {0}, type help to see a list of commands.", currentDay);
                 command = Console.ReadLine() ?? "";
 
-
                 if (command == "help" || command == "Help")
                 {
                     Console.WriteLine(
@@ -134,6 +133,9 @@ internal class Program
                 else if (command == "checkDurability")
                 {
                     Console.WriteLine(inventory[2, 1]);
+                }
+                else if(command == "test")
+                {
                 }
                 currentDay++;
             }

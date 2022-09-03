@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Console_rpg
 {
-    internal class Commands
+    internal class Command
     {
         void test()
         {
