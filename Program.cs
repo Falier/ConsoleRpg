@@ -125,26 +125,18 @@ internal class Program
                         currentDay--;
                     }
                 }
-                else if (command == "GiveAxe")
-                {
-                    inventory[3, 0]++;
-                    inventory[3, 1] = 20;
-                    currentDay--;
-                    Console.WriteLine(inventory[3, 0]);
-
-                }
-                else if (command == "checkDurability")
-                {
-                    Console.WriteLine(inventory[2, 1]);
-                }
                 else if (command == "Fish" || command == "fish")
                 {
                     if(inventory[4,0] >= 1)
                     {
                         int fishing;
                         fishing = random.Next(2);
-                        inventory[4,1] -= 1;
+                        inventory[4,1] --;
                         Console.WriteLine("You fished {0} fish", fishing);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You need a fishing rod for that");
                     }
                 }
                 currentDay++;
