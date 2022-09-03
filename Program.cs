@@ -11,7 +11,9 @@ internal class Program
                         /*stone*/{ 0, 0},
                         /*wood*/{ 0, 0},
                         /*Pickaxe*/{0, 0},
-                        /*Axe*/{0, 0}
+                        /*Axe*/{0, 0},
+                        /*Fishing rod*/{0,0},
+                        /*Fish*/ {0,0}
                       };
         int energy = 60;
         int lifePoint = 100;
@@ -123,17 +125,19 @@ internal class Program
                         currentDay--;
                     }
                 }
-                else if (command == "GiveAxe")
+                else if (command == "Fish" || command == "fish")
                 {
-                    inventory[3, 0]++;
-                    inventory[3, 1] = 20;
-                    currentDay--;
-                    Console.WriteLine(inventory[3, 0]);
-
-                }
-                else if (command == "checkDurability")
-                {
-                    Console.WriteLine(inventory[2, 1]);
+                    if(inventory[4,0] >= 1)
+                    {
+                        int fishing;
+                        fishing = random.Next(2);
+                        inventory[4,1] --;
+                        Console.WriteLine("You fished {0} fish", fishing);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You need a fishing rod for that");
+                    }
                 }
                 currentDay++;
             }
