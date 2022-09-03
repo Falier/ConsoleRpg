@@ -18,6 +18,7 @@ internal class Program
 
         bool gameOver = false;
 
+        Command commands = new Command();
 
         //Item id, number, durability(null if no durability)
 
@@ -30,22 +31,8 @@ internal class Program
                 Console.WriteLine("Day {0}, type help to see a list of commands.", currentDay);
                 command = Console.ReadLine() ?? "";
 
-                if (command == "help" || command == "Help")
-                {
-                    Console.WriteLine(
-                        "[Gather] : gather ressources\n" +
-                        "[Explore] : try to find some interresting structures\n" +
-                        "[Rest] : Rest a little bit to recover energy\n" +
-                        "[Stats] : Show your stats\n" +
-                        "[Inventory] : Open inventory\n" +
-                        "[Craft] : Show craft menu. Type an item after the command to craft it\n" +
-                        "[Drink] : Drink water\n" +
-                        "[Eat] : Eat\n" +
-                        "[Hunt] : Hunt creaturesl\n" +
-                        "[Mine] : Use your pickaxe to mine some rocks\n" +
-                        "[Chop] : Use your axe to chop some wood\n" +
-                        "[Fish] : Use your fishing rod and try to catch a fish\n");
-                }
+                if (command == "help" || command == "Help") commands.help();
+
                 else if (command == "")
                 {
                     Console.WriteLine("Please enter a valid command");
@@ -53,12 +40,7 @@ internal class Program
                 }
                 else if (command == "gather" || command == "Gather")
                 {
-                    int gatheredRocks = random.Next(3);
-                    int gatheredWood = random.Next(4);
-                    inventory[0, 0] += gatheredRocks;
-                    inventory[1, 0] += gatheredWood;
-                    energy -= 10;
-                    Console.WriteLine("+{0} wood, +{1} rocks", gatheredWood, gatheredRocks);
+                    
                 }
                 else if (command == "explore" || command == "Explore")
                 {
@@ -136,6 +118,7 @@ internal class Program
                 }
                 else if(command == "test")
                 {
+                    commands.test();
                 }
                 currentDay++;
             }
