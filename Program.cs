@@ -1,4 +1,3 @@
-using Console_rpg;
 internal class Program
 {
     private static void Main(string[] args)
@@ -13,14 +12,11 @@ internal class Program
                         /*Pickaxe*/{0, 0},
                         /*Axe*/{0, 0}
                       };
-        int energy = 60;
+        int energy = 100;
         int lifePoint = 100;
 
         bool gameOver = false;
 
-        Command commands = new Command();
-
-        //Item id, number, durability(null if no durability)
 
         //1 = Rock, 2 = Wood, 
 
@@ -28,67 +24,42 @@ internal class Program
         {
             while (!gameOver)
             {
-                Console.WriteLine("Day {0}, type help to see a list of commands.", currentDay);
+                Console.WriteLine("Day {0}, type help to see a list of ", currentDay);
                 command = Console.ReadLine() ?? "";
 
-                if (command == "help" || command == "Help") commands.help();
+                //Test for command entered
+
+                if (command == "help" || command == "Help") help();
+
 
                 else if (command == "")
                 {
                     Console.WriteLine("Please enter a valid command");
                     currentDay--;
                 }
-                else if (command == "gather" || command == "Gather")
-                {
-                    
-                }
+
+
+                else if (command == "gather" || command == "Gather") gather();
+
+
                 else if (command == "explore" || command == "Explore")
                 {
                     Console.WriteLine("Comming soon");
                 }
-                else if (command == "rest" || command == "Rest")
-                {
-                    if (energy == 100)
-                    {
-                        Console.WriteLine("You're already at max energy");
-                    }
-                    else
-                    {
-                        int checkEnergy = 100 - energy;
-                        if (checkEnergy <= 20)
-                        {
-                            energy += checkEnergy;
-                        }
-                        else
-                        {
-                            energy += 20;
-                        }
-                        Console.WriteLine("You're now at {0} energy", energy);
-                    }
-                }
+
+                else if (command == "rest" || command == "Rest") rest();
+
                 else if (command == "stats" || command == "Stats")
                 {
                     Console.WriteLine("[HP] : {0} \n[ENERGY] : {1}", lifePoint, energy);
                 }
-                else if (command == "Inventory" || command == "inventory")
-                {
-                    displayInventory();
-                }
-                else if (command == "Mine" || command == "mine")
-                {
-                    if (inventory[2, 0] != 0)
-                    {
-                        int minedRocks = random.Next(2, 5);
-                        inventory[0, 0] += minedRocks;
-                        inventory[2, 1]--;
-                        Console.WriteLine("+{0} rocks", minedRocks);
-                    }
-                    else
-                    {
-                        Console.WriteLine("You need a pickaxe !");
-                        currentDay--;
-                    }
-                }
+
+
+                else if (command == "Inventory" || command == "inventory") displayInventory();
+
+
+                else if (command == "Mine" || command == "mine") mine();
+
                 else if (command == "Chop" || command == "chop")
                 {
                     if (inventory[3, 0] != 0)
@@ -116,9 +87,9 @@ internal class Program
                 {
                     Console.WriteLine(inventory[2, 1]);
                 }
-                else if(command == "test")
+                else if (command == "test")
                 {
-                    commands.test();
+                    test();
                 }
                 currentDay++;
             }
@@ -126,7 +97,7 @@ internal class Program
 
         void displayInventory()
         {
-            /*Console.WriteLine("" +
+            Console.WriteLine("" +
                 "[Stone] {0}" +
                 "[Wood] {1}" +
                 "[Pickaxe] {2]" +
@@ -134,7 +105,79 @@ internal class Program
                 inventory[0,0],
                 inventory[1,0],
                 inventory[2,0],
-                inventory[3,0]);*/
+                inventory[3,0]);
         }
+
+        //Commands
+
+        void test()
+        {
+            Console.WriteLine("Test working");
+        }
+
+        void help()
+        {
+            Console.WriteLine(
+                        "[Gather] : gather ressources\n" +
+                        "[Explore] : try to find some interresting structures\n" +
+                        "[Rest] : Rest a little bit to recover energy\n" +
+                        "[Stats] : Show your stats\n" +
+                        "[Inventory] : Open inventory\n" +
+                        "[Craft] : Show craft menu. Type an item after the command to craft it\n" +
+                        "[Drink] : Drink water\n" +
+                        "[Eat] : Eat\n" +
+                        "[Hunt] : Hunt creatures\n" +
+                        "[Mine] : Use your pickaxe to mine some rocks\n" +
+                        "[Chop] : Use your axe to chop some wood\n" +
+                        "[Fish] : Use your fishing rod and try to catch a fish\n");
+        }
+
+        void rest()
+        {
+            if (energy == 100)
+            {
+                Console.WriteLine("You're already at max energy");
+            }
+            else
+            {
+                int checkEnergy = 100 - energy;
+                if (checkEnergy <= 20)
+                {
+                    energy += checkEnergy;
+                }
+                else
+                {
+                    energy += 20;
+                }
+                Console.WriteLine("You're now at {0} energy", energy);
+            }
+        }
+
+        void gather()
+        {
+            int gatheredRocks = random.Next(3);
+            int gatheredWood = random.Next(4);
+            inventory[0, 0] += gatheredRocks;
+            inventory[1, 0] += gatheredWood;
+            energy -= 10;
+            Console.WriteLine("+{0} wood, +{1} rocks", gatheredWood, gatheredRocks);
+        }
+
+        void mine()
+        {
+            if (inventory[2, 0] != 0)
+            {
+                int minedRocks = random.Next(2, 5);
+                inventory[0, 0] += minedRocks;
+                inventory[2, 1]--;
+                Console.WriteLine("+{0} rocks", minedRocks);
+            }
+            else
+            {
+                Console.WriteLine("You need a pickaxe !");
+                currentDay--;
+            }
+        }
+
     }
 }
